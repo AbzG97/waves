@@ -1,0 +1,80 @@
+.navbar {
+    background-color: rgb(27, 27, 27);
+    color: rgb(145, 142, 142);
+    position: fixed;
+    height: 100%;
+    width: 225px;
+    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
+    -webkit-border-top-right-radius: 100px;
+    -webkit-border-bottom-right-radius: 100px;
+    -moz-border-radius-topright: 100px;
+    -moz-border-radius-bottomright: 100px;
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    -webkit-box-shadow: 5px 0px 20px 0px rgba(0,0,0,0.6); 
+    box-shadow: 5px 0px 20px 0px rgba(0,0,0,0.6);   
+
+    .your-library {
+        display: flex;
+        flex-direction: column;
+        //background-color: yellow;
+        padding: 3rem 0 0 0 ;
+        margin-bottom: 1rem;
+        h2 {
+            padding: 0 0 .5rem 1rem ;
+        }
+        p {
+            padding: .5rem 0 .5rem 2rem ;
+            margin: .5rem 0 .5rem 0  ;
+            width: 85%;
+            transition: all .5s ease;
+            cursor: pointer;
+        
+
+        }
+    }
+
+    .playlist {
+        padding: 1rem 1rem 1rem 0;
+        margin-bottom: 1rem;
+        // background-color: yellowgreen;
+        display: flex;
+        flex-direction: column;
+        h2 {
+            padding: 0 0 .5rem 1rem ;
+        }
+        p {
+            padding: .5rem 0 .5rem 2rem ;
+            margin: .5rem 0 .5rem 0  ;
+            width: 85%;
+            transition: all .5s ease;
+            cursor: pointer;
+
+        }
+       
+    }
+}
+
+
+
+.navbar p:hover {
+    background-color: rgb(87, 87, 87);
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    color: white;
+}
+
+.horzontal-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    hr {
+        width: 85%;
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(170, 143, 143, 0), rgba(145, 118, 118, 0.75), rgba(44, 43, 43, 0));
+    }
+}
