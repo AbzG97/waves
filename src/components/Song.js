@@ -13,7 +13,6 @@ function Song({song, songs, index, setCurrentSong, setSongs}) {
       }
     });
     setSongs(songs);
-    console.log(song);
   }
  
 

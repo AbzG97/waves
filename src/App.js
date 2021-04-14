@@ -4,6 +4,7 @@ import './styles/app.scss';
 import Navbar from './components/Navbar';
 import Library from './components/Library';
 import Player from './components/Player';
+import CurrentSong from './components/CurrentSong';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
       <div className="bg-image"></div>
       <h1>Waves</h1>
       <Navbar/>
+      <CurrentSong currentSong={currentSong}/>
       <Library isPlaying={isPlaying} songs={songs} currentSong={currentSong} setCurrentSong={setCurrentSong} setSongs={setSongs} />
       <Player isPlaying={isPlaying} setIsPlaying={setIsPlaying} currentSong={currentSong}/>
     </div>

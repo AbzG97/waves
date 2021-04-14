@@ -16,6 +16,7 @@ function Player({currentSong, isPlaying, setIsPlaying}) {
 
 
   const audioRef = useRef(null);
+
   const [songTime, setSongTime] = useState({
     current: 0,
     duration: 0
@@ -47,6 +48,8 @@ function Player({currentSong, isPlaying, setIsPlaying}) {
   const formatTime = (time) => {
     return ( Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2) ) ;
   }
+
+  
   return (
     <div className="player">
       <div className='play-control'>

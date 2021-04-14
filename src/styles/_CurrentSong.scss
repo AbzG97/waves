@@ -1,0 +1,25 @@
+.current-song {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    height: 100%; 
+    align-items: center;
+    justify-content: center;
+    // background-color: black;
+    color: white;
+    position: relative;
+    left: 15rem;
+    top: 10rem;
+    align-content: space-around;
+    
+    img {
+        width: 35%;
+        border-radius: 50%;
+        filter: grayscale(100%);
+        -webkit-box-shadow: 1px 1px 18px 2px #000000; 
+        box-shadow: 1px 1px 18px 2px #000000;
+    }
+    h1, h2 {
+        margin: 1rem 0 1rem 0;
+    }
+}
