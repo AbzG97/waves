@@ -3,15 +3,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlayCircle, faStepBackward, faStepForward, faPauseCircle } from '@fortawesome/free-solid-svg-icons'
 
 
-function Player({currentSong, isPlaying, setIsPlaying}) {
+function Player({currentSong, setCurrentSong, isPlaying, setIsPlaying, songs, setSongs}) {
   // auto play song everytime the current song changes
   useEffect(() => {
+   
+
     if(isPlaying){ // play the song when selecting it from the library
       const playPromise = audioRef.current.play();
       if(playPromise !== undefined){
           playPromise.then((audio) => {audioRef.current.play()});
       }
   }
+  songs.forEach(song => {
+    if(song.id !== currentSong.id){
+      song.active = false;
+    } else {
+      song.active = true;
+    }
+  });
+  setSongs(songs);
   }, [currentSong])
 
 
@@ -46,16 +56,29 @@ function Player({currentSong, isPlaying, setIsPlaying}) {
   }
 
   const formatTime = (time) => {
-    return ( Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2) ) ;
+    return ( Math.floor(time / 60) + ":" + ("0" + Math.floor(time % 60)).slice(-2)) ;
   }
 
+  const skipSongHandler = (direction) => {
+    const index = songs.findIndex((index) => index.id === currentSong.id); // find the index of the current song
+    console.log(index);
+    if(direction === 'skip-back'){
+      console.log(direction);
+      setCurrentSong(songs[(index + songs.length - 1) % songs.length]);    
+
+    } if(direction === 'skip-forward'){
+      console.log(direction);
+      setCurrentSong(songs[(index + 1) % songs.length]);
+
+    }
+  } 
   
   return (
     <div className="player">
       <div className='play-control'>
-        <FontAwesomeIcon  className='icons' icon={faStepBackward} size='2x'/>
+        <FontAwesomeIcon onClick={() => skipSongHandler('skip-back')}  className='icons' icon={faStepBackward} size='2x'/>
         <FontAwesomeIcon onClick={playSelectedSongHandler} className='icons' icon={isPlaying ? faPauseCircle : faPlayCircle} size='2x'/>
-        <FontAwesomeIcon className='icons' icon={faStepForward} size='2x' />
+        <FontAwesomeIcon onClick={() => skipSongHandler('skip-forward')} className='icons' icon={faStepForward} size='2x' />
 
       </div>
       <div className='time-control'>
