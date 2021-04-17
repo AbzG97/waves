@@ -19,6 +19,9 @@
         width: 25%;
 
     }
+    .heart-icon {
+        display: none;
+    }
 }
 
 .song:hover {
@@ -33,4 +36,14 @@
     border-radius: 30px;
     color: white;
     
+}
+
+
+
+.song:hover .heart-icon {
+    display: block;
+}
+
+.favourited-song {
+    display: block;
 }

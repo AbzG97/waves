@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Song from './Song';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import  '@fortawesome/free-regular-svg-icons';
@@ -6,7 +6,8 @@ import { faCircle } from '@fortawesome/free-solid-svg-icons';
 
 
 
-function Library({songs, currentSong, setCurrentSong, isPlaying, setSongs}) {
+function Library({songs, currentSong, setCurrentSong, isPlaying, setSongs,favourtieSongs, setFavouriteSongs}) {
+  
   return (
     <div className="library">
         <div className="album-details">
@@ -35,7 +36,8 @@ function Library({songs, currentSong, setCurrentSong, isPlaying, setSongs}) {
         <div className="album-songs">
             {songs.map((song) => (
                 <Song index={songs.findIndex((index) => index.id === song.id)} key={song.id} song={song}
-                  setCurrentSong={setCurrentSong} isPlaying={isPlaying} songs={songs} setSongs={setSongs}/>
+                  setCurrentSong={setCurrentSong} isPlaying={isPlaying} songs={songs} setSongs={setSongs} favourtieSongs={favourtieSongs}
+                  setFavouriteSongs={setFavouriteSongs}/>
             ))}
         </div>
       
