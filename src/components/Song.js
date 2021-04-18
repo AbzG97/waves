@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 
-function Song({song, songs, index, setCurrentSong, setSongs, isPlaying, favourtieSongs, setFavouriteSongs}) {
+function Song({song, songs, index, setCurrentSong, setSongs, isPlaying, audioRef}) {
  
 
   const favouriteHandler = () => {
@@ -21,6 +21,14 @@ function Song({song, songs, index, setCurrentSong, setSongs, isPlaying, favourti
   const selectSongHandler = () => {
     const selected = songs.filter((selected) => selected.id === song.id ); // filter out the selected song 
     setCurrentSong(selected[0]); 
+
+    if(isPlaying){ // play the song when selecting it from the library
+      const playPromise = audioRef.current.play();
+      if(playPromise !== undefined){
+          playPromise.then((audio) => {audioRef.current.play()});
+      }
+  }
+
     songs.forEach(song => {
       if(song.id !== selected[0].id){
         song.active = false;

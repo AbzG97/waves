@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlayCircle, faStepBackward, faStepForward, faPauseCircle } from '@fortawesome/free-solid-svg-icons'
 
 
-function Player({currentSong, setCurrentSong, isPlaying, setIsPlaying, songs, setSongs}) {
+function Player({currentSong, setCurrentSong, isPlaying, setIsPlaying, songs, setSongs, audioRef, songTime, setSongTime}) {
   // auto play song everytime the current song changes
   useEffect(() => {
    
@@ -25,13 +25,7 @@ function Player({currentSong, setCurrentSong, isPlaying, setIsPlaying, songs, se
   }, [currentSong])
 
 
-  const audioRef = useRef(null);
-
-  const [songTime, setSongTime] = useState({
-    current: 0,
-    duration: 0
-  });
-
+ 
   const playSelectedSongHandler = () => {
     if(isPlaying){
       audioRef.current.pause();
@@ -42,13 +36,7 @@ function Player({currentSong, setCurrentSong, isPlaying, setIsPlaying, songs, se
     }
   }
 
-  const updateSongUpdateHandler = (e) => {
-    //console.log(e.target.currentTime);
-    setSongTime({
-      current: e.target.currentTime,
-      duration: e.target.duration
-    });
-  }
+  
 
   const dragHandler = (e) => {
     audioRef.current.currentTime = e.target.value; // set the value of drag to equal the time of currentTime of the song
@@ -86,7 +74,7 @@ function Player({currentSong, setCurrentSong, isPlaying, setIsPlaying, songs, se
         <input onChange={dragHandler} type="range"  min={0} max={songTime.duration || 0} value={songTime.current} />
         <p>{formatTime(songTime.duration || 0)}</p>
       </div>
-      <audio onTimeUpdate={updateSongUpdateHandler} ref={audioRef} src={currentSong.audio}/>
+      
     </div>
    
   );

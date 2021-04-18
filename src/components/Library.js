@@ -6,11 +6,11 @@ import { faCircle } from '@fortawesome/free-solid-svg-icons';
 
 
 
-function Library({songs, currentSong, setCurrentSong, isPlaying, setSongs,favourtieSongs, setFavouriteSongs}) {
+function Library({songs, currentSong, setCurrentSong, isPlaying, setSongs,favourtieSongs, setFavouriteSongs, audioRef}) {
   
   return (
     <div className="library">
-        <div className="album-details">
+        {/* <div className="album-details">
           <div className="info">
           <h1>Playlist name</h1>
             <h2>Artist</h2>
@@ -31,13 +31,13 @@ function Library({songs, currentSong, setCurrentSong, isPlaying, setSongs,favour
               </div>
             </div>
         </div>
-        <hr/>
+        <hr/> */}
 
         <div className="album-songs">
             {songs.map((song) => (
                 <Song index={songs.findIndex((index) => index.id === song.id)} key={song.id} song={song}
                   setCurrentSong={setCurrentSong} isPlaying={isPlaying} songs={songs} setSongs={setSongs} favourtieSongs={favourtieSongs}
-                  setFavouriteSongs={setFavouriteSongs}/>
+                  setFavouriteSongs={setFavouriteSongs} audioRef={audioRef}/>
             ))}
         </div>
       
