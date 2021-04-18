@@ -5,7 +5,7 @@ import Navbar from './components/Navbar';
 import Library from './components/Library';
 import Player from './components/Player';
 import CurrentSong from './components/CurrentSong';
-import CreatePlaylistModal from './components/CreatePlaylistModal';
+
 
 
 function App() {

@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { Modal, Button } from 'react-bootstrap';
-import CreatePlaylistModal from './CreatePlaylistModal';
+
 
 
 function Navbar({songs, setSongs}) {
@@ -13,10 +12,7 @@ function Navbar({songs, setSongs}) {
     songs: []
   }];
   const [playlist, setPlaylist] = useState(playlist_data);
-  const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
 
   const viewFavouritesHandler = () => {
     const favourites = songs.filter((state) => state.favourite === true);
